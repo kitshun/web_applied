@@ -7,6 +7,9 @@ let y = 80;
 let vx = 180;         // 横の速さ（1秒に180px）
 let vy = 140;         // 縦の速さ（1秒に140px。＋ は下へ）
 let r = 14;         // 半径
+
+let gravity = 500; // 重力加速度（px/s²）
+
 let last = performance.now();
 
 document.addEventListener("keydown", (e) => {
@@ -29,6 +32,7 @@ document.addEventListener("keydown", (e) => {
 });
 
 function update(dt) {
+  vy = vy + gravity * dt;
   x = x + vx * dt;
   y = y + vy * dt;
 
