@@ -18,15 +18,15 @@ document.addEventListener("keydown", (e) => {
     vy = vy * 1.2;
   }
   if (e.code === "ArrowRight") {
-    r = r * 1.2;   // 速さを1.2倍（向きはそのまま）
+    r = r * 1.2;  
   
   }
   if (e.code === "ArrowLeft") {
-    r = r * 0.8;   // 速さを1.2倍（向きはそのまま）
+    r = r * 0.8;   
  
   }
   if (e.code === "ArrowDown") {
-    vx = vx * 0.8;   // 速さを1.2倍（向きはそのまま）
+    vx = vx * 0.8;   
     vy = vy * 0.8;
   }
 });
