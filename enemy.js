@@ -24,6 +24,8 @@ enemies.push(special);
 
 function updateEnemies(dt) {
   for (const enemy of enemies) {
+<<<<<<< HEAD
+=======
 
     if (enemy.type === "notice") {
       const playerCenterX = player.x + player.w / 2;
@@ -46,3 +48,77 @@ function updateEnemies(dt) {
         }
       }
     }
+
+    // 敵の移動
+    enemy.x = enemy.x + enemy.vx * dt;
+>>>>>>> 60e4f7b (7-A 敵の種類を足す)
+
+    if (enemy.type === "notice") {
+      const playerCenterX = player.x + player.w / 2;
+      const playerCenterY = player.y + player.h / 2;
+
+      const enemyCenterX = enemy.x + enemy.w / 2;
+      const enemyCenterY = enemy.y + enemy.h / 2;
+
+      const dx = playerCenterX - enemyCenterX;
+      const dy = playerCenterY - enemyCenterY;
+
+      const distance = Math.sqrt(dx * dx + dy * dy);
+
+      if (distance <= NOTICE_RANGE) {
+
+        if (enemy.vx > 0) {
+          enemy.vx = NOTICE_SPEED;
+        } else if (enemy.vx < 0) {
+          enemy.vx = -NOTICE_SPEED;
+        }
+      }
+    }
+<<<<<<< HEAD
+=======
+
+    if (enemy.x + enemy.w > canvas.width) {
+      enemy.x = canvas.width - enemy.w;
+      enemy.vx = -enemy.vx;
+    }
+  }
+}
+
+function drawEnemies() {
+  for (const enemy of enemies) {
+    if (!enemy.alive) continue;
+
+    // 敵の種類によって色を変更する
+    if (enemy.type === "notice") {
+      ctx.fillStyle = "orange";
+    } else {
+      ctx.fillStyle = "red";
+    }
+
+    ctx.fillRect(
+      enemy.x,
+      enemy.y,
+      enemy.w,
+      enemy.h
+    );
+  }
+}
+
+function collideWithEnemies(prevBottom) {
+  for (const enemy of enemies) {
+    if (!enemy.alive) continue;
+
+    if (
+      aabb(player, enemy) &&
+      prevBottom <= enemy.y &&
+      player.vy > 0
+    ) {
+      enemy.alive = false;
+      player.vy = -JUMP_SPEED / 2;
+    }
+  }
+
+  // 倒した敵を配列から取り除く
+  enemies = enemies.filter((enemy) => enemy.alive);
+}
+>>>>>>> 60e4f7b (7-A 敵の種類を足す)
