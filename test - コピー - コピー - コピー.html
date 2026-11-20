@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .changed{
+            color:red;
+        }
+    </style>
+</head>
+<body>
+    <p id = "msg">こんにちは</p>
+    <button id = "btn">押す</button>
+    <button id = "btn2">リセット</button>
+
+    <script>
+
+        const msg = document.getElementById("msg");
+        const btn = document.getElementById("btn");
+        const btn2 = document.getElementById("btn2");
+
+        btn.addEventListener("click",function(){
+            msg.textContent = "押したよ";
+            msg.classList.add("changed");
+        });
+
+        btn2.addEventListener("click",function(){
+            msg.textContent = "押す";
+            msg.classList.remove("changed");
+        });
+    </script>
+</body>
+</html>

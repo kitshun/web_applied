@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .changed{
+            color:red;
+        }
+    </style>
+</head>
+<body>
+    <p id = "msg">こんにちは</p>
+    <button id = "btn">押せ</button>
+    <script>
+
+        const msg = document.getElementById("msg");
+        const btn = document.getElementById("btn");
+
+        btn.addEventListener("click",function(){
+            msg.textContent = ("押したよ");
+            msg.classList.add("changed");
+        });
+    </script>
+    
+</body>
+</html>
